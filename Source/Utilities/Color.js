@@ -18,14 +18,15 @@ requires:
   - Core/Number
   - Core/Hash
   - Core/Function
-  - Core/$util
 
 provides: [Color]
 
 ...
 */
 
-var Color = new Type('Color', function(color, type){
+(function(){
+
+var Color = this.Color = new Type('Color', function(color, type){
 	if (arguments.length >= 3){
 		type = 'rgb'; color = Array.slice(arguments, 0, 3);
 	} else if (typeof color == 'string'){
@@ -105,7 +106,7 @@ Array.implement({
 		var delta = max - min;
 		var brightness = max / 255,
 				saturation = (max != 0) ? delta / max : 0;
-		if(saturation != 0){
+		if (saturation != 0){
 			var rr = (max - red) / delta;
 			var gr = (max - green) / delta;
 			var br = (max - blue) / delta;
@@ -155,3 +156,6 @@ String.implement({
 	}
 
 });
+
+})();
+
