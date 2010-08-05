@@ -45,7 +45,7 @@ provides: [Lang]
 			return this;
 		},
 
-		load: function() {
+		load: function(){
 			var langs = this.cascade(this.getCurrentLanguage());
 			cascaded = {};
 			Object.each(langs, function(set, setName){
@@ -72,7 +72,7 @@ provides: [Lang]
 			return Object.merge.apply(this, langs);
 		},
 
-		lambda: function(set) {
+		lambda: function(set){
 			(set || {}).get = function(key, args){
 				return Function.from(set[key]).apply(this, Array.from(args));
 			};
